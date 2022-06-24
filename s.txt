@@ -1,0 +1,42 @@
+10 rem ---- "s" to prepare the c64 ----
+20 rem --- written by greg nacu 2022 --
+30 rem --------------------------------
+40 printchr$(14):rem upper/lower
+50 poke53280,3:rem border cyan
+60 poke53281,1:rem bkgrnd white
+70 poke646,14:rem  text lt blue
+75 rem --- define f-keys --------------
+80 f1$="@$:*"+chr$(13)+chr$(0)
+81 f2$="^1//:c64os"+chr$(13)+chr$(0)
+82 f3$="\1//:tmp"+chr$(13)+chr$(0)
+83 f4$="@t"+chr$(0)
+84 f5$="^1//:novatext*"+chr$(13)+chr$(0)
+85 f6$="^1//:s"+chr$(13)+chr$(0)
+86 f7$="\1//:monitorc"+chr$(13)+chr$(0)
+87 f8$="@  "+chr$(34)+"s:"+chr$(0)
+90 f$=f1$+f3$+f5$+f7$+f2$+f4$+f6$+f8$
+95 buf=820
+100 for i=1tolen(f$)
+110 poke(buf+i-1),asc(mid$(f$,i,1)):nexti
+115 poke176,buf-(256*(int(buf/256)))
+120 poke177,int(buf/256):poke155,0
+130 rem --- configure drives ----------
+140 @#8:rem current dev 8
+150 @x10:rem target dev 10
+160 @"cp1":rem current part 1
+170 rem @"cd//":rem current dir //
+175 open15,8,15:close15:rem close files
+180 rem --- ready message -------------
+190 poke650,128:rem repeat all keys
+200 print"Ready for work."
+210 @"t-ra":@:print""
+215 gosub 300:print"";
+220 new
+299 end:rem ---- help display ---------
+300 print"F1:{$a0}Directory     F2: C64 OS"
+310 print"F3: TurboMacroPro F4: Text File"
+320 print"F5: NovaText      F6: Reset"
+330 print"F7: Monitor       F8:{$a0}Scratch File"
+340 return
+4999 end:rem ---- quick save ----------
+5000 dv=peek(186):save"@:s",dv
