@@ -1,7 +1,7 @@
 # c64-startup-script
 A startup script for the C64
 
-This is a text dump of a BASIC program. The text is in PETSCII not ASCII. Sorry if that makes you unhappy because you can't read the file on a PC properly without converting it first. But, it's for the Commodore 64, and the Commodore 64's native text encoding is PETSCII. Tada.
+This is a text dump of a BASIC program (s.bsc). The text is in PETSCII not ASCII. Sorry if that makes you unhappy because you can't read the file on a PC properly without converting it first. But, it's for the Commodore 64, and the Commodore 64's native text encoding is PETSCII. (I caved an added an ASCII translation, s.txt)
 
 The C64 doesn't (in stock configuration) have the ability to run a script at startup automatically. If you only have a floppy drive, this is not going to serve you unless you put a copy of this on every single disk. But, if you have a hard drive or equivalent mass storage device, then you can just stick it in the root directory of the default partition. It's named "s" to be minimally short and easy to run.
 
